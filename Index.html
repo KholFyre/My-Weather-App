@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+
+    <script
+      src="https://kit.fontawesome.com/49bf936ec9.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col">
+          <form class="form-inline" id="search-form">
+            <div class="form-group mb-2"></div>
+            <div class="form-group mx-sm-3 mb-2">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter a City"
+                id="city-input"
+                autocomplete="off"
+              />
+            </div>
+            <div class="col">
+              <button
+                type="button"
+                class="btn btn-outline-primary"
+                id="searchButton"
+              >
+                Search
+              </button>
+            </div>
+
+            <div class="col">
+              <button
+                type="button"
+                class="btn btn-outline-primary"
+                id="geolocation-button"
+              >
+                <i class="fas fa-map-marker-alt"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <h3 id="city">Search for a City</h3>
+      <h4 id="currentDateAndTime"></h4>
+      <span class="current-temperature">
+        <h1 class="current-temperature" id="current-temperature"></h1>
+      </span>
+      <span class="temperature-units">
+        <a href="#" id="fahrenheit-link" class="active"> °F</a>
+        |
+        <a href="#" id="celsius-link" class="active"> °C</a>
+      </span>
+
+      <h6 class="today-max-and-min-temperatures">H:54° L:41°</h6>
+
+      <div class="row" id="current-forecast">
+        <div class="col-4" id="mainWeather">Clear Sky</div>
+        <div class="col-4" id="windSpeed">Wind: 4mph</div>
+        <div class="col-4" id="humidityLevel">Humidity 87%</div>
+      </div>
+      <hr />
+
+      <div class="row by-hourly-forecast" id="by-hourly-forecast">
+        <div class="col hours">
+          Currently
+          <div class="col by-hourly-weather-icon">
+            <img src="images/day_clear.png" width="21" height="21" />
+          </div>
+          <div class="col">50°</div>
+        </div>
+        <div class="col">
+          2pm
+          <div class="col by-hourly-weather-icon">
+            <img src="images/day_clear.png" width="21" height="21" />
+          </div>
+          <div class="col">48°</div>
+        </div>
+        <div class="col">
+          4pm
+          <div class="col by-hourly-weather-icon">
+            <img src="images/day_clear.png" width="21" height="21" />
+          </div>
+          <div class="col">45°</div>
+        </div>
+        <div class="col">
+          6pm
+          <div class="col by-hourly-weather-icon">
+            <img src="images/angry_clouds.png" width="21" height="21" />
+          </div>
+          <div class="col">43°</div>
+        </div>
+        <div class="col">
+          8pm
+          <div class="col by-hourly-weather-icon">
+            <img src="images/angry_clouds.png" width="21" height="21" />
+          </div>
+          <div class="col">40°</div>
+        </div>
+      </div>
+      <hr />
+      <div class="container-weekly">
+        <div class="row align-items-start">
+          <div class="col-5" id="day-of-week">Friday</div>
+          <div class="col-4 daily-weather-icon" id="daily-weather-icon">
+            <img src="images/angry_clouds.png" width="21" height="21" />
+          </div>
+          <div class="col-1" id="daily-high">71</div>
+          <div class="col-1" id="daily-low">45</div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-5" id="day-of-week">Saturday</div>
+          <div class="col-4 daily-weather-icon" id="daily-weather-icon">
+            <img src="images/snow.png" width="21" height="21" />
+          </div>
+          <div class="col-1" id="daily-high">57</div>
+          <div class="col-1" id="daily-low">39</div>
+        </div>
+        <div class="row align-items-end">
+          <div class="col-5" id="day-of-week">Sunday</div>
+          <div class="col-4 daily-weather-icon" id="daily-weather-icon">
+            <img src="images/day_clear.png" width="21" height="21" />
+          </div>
+          <div class="col-1" id="daily-high">72</div>
+          <div class="col-1" id="daily-low">45</div>
+        </div>
+        <div class="row align-items-end">
+          <div class="col-5" id="day-of-week">Monday</div>
+          <div class="col-4 daily-weather-icon" id="daily-weather-icon">
+            <img src="images/day_partial_cloud.png" width="21" height="21" />
+          </div>
+          <div class="col-1" id="daily-high">61</div>
+          <div class="col-1" id="daily-low">39</div>
+        </div>
+        <div class="row align-items-end">
+          <div class="col-5" id="day-of-week">Tuesday</div>
+          <div class="col-4 daily-weather-icon" id="daily-weather-icon">
+            <img src="images/day_sleet.png" width="21" height="21" />
+          </div>
+          <div class="col-1" id="daily-high">55</div>
+          <div class="col-1" id="daily-low">39</div>
+        </div>
+        <div class="row align-items-end">
+          <div class="col-5" id="day-of-week">Wednesday</div>
+          <div class="col-4 daily-weather-icon" id="daily-weather-icon">
+            <img src="images/day_clear.png" width="21" height="21" />
+          </div>
+          <div class="col-1" id="daily-high">55</div>
+          <div class="col-1" id="daily-low">37</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="src/script.js"></script>
+  </body>
+</html>

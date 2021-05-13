@@ -1,0 +1,86 @@
+body {
+  background-color: whitesmoke;
+}
+
+.container {
+  background: url(images/night_sky.jpg) rgb(127, 201, 230);
+  background-size: cover;
+  border-radius: 10px;
+  box-shadow: 5px 10px 10px 5px grey;
+  padding: 20px;
+  width: 450px;
+  text-align: center;
+  color: white;
+  margin-top: 15px;
+}
+
+.today-max-and-min-temperatures {
+  color: white;
+  font-size: 15px;
+}
+span.temperature-units {
+  margin-bottom: 25px;
+  color: white;
+}
+a.active {
+  color: white;
+}
+
+a:hover {
+  color: #037cfe;
+}
+
+#current-temperature {
+  text-align: center;
+  padding-left: 35px;
+}
+
+#current-forecast {
+  color: white;
+  font-size: 15px;
+}
+
+#by-hourly-forecast {
+  color: white;
+  font-size: 15px;
+}
+#img-by-hourly {
+  font-size: small;
+}
+#daily-high {
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+}
+#daily-low {
+  color: slategrey;
+  font-size: 15px;
+}
+#day-of-week {
+  font-size: 15px;
+  color: white;
+  text-align: left;
+}
+#daily-weather-icon {
+  text-align: left;
+}
+
+h1 {
+  color: white;
+  font-size: 60px;
+  display: inline;
+  text-align: end;
+}
+
+h3 {
+  color: white;
+  padding-top: 20px;
+}
+
+h4 {
+  color: white;
+  font-size: 15px;
+}
+hr {
+  color: white;
+}
