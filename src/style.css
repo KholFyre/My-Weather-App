@@ -3,7 +3,7 @@ body {
 }
 
 .container {
-  background: url(images/night_sky.jpg) rgb(127, 201, 230);
+  background: url("../images/night_sky.jpg") rgb(127, 201, 230);
   background-size: cover;
   border-radius: 10px;
   box-shadow: 5px 10px 10px 5px grey;
