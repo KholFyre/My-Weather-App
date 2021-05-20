@@ -137,13 +137,17 @@ function searchTemperature (response) {
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement= document.querySelector("#current-temperature");
   temperatureElement.innerHTML = `${temperature}`;
+
   let location = response.data.name;
   let locationElement= document.querySelector("#city");
   locationElement.innerHTML = `${location}`;
+
   let descriptionElement = document.querySelector("#weatherDescription");
   descriptionElement.innerHTML = response.data.weather[0].description;
+  
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = response.data.main.humidity;
+  
   let windSpeedElement = document.querySelector("#windSpeed");
   windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
 }
