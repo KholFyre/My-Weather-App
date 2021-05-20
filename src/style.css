@@ -65,6 +65,12 @@ a:hover {
   text-align: left;
 }
 
+#weatherDescription {
+  text-transform: capitalize;
+  font-size: 15px;
+  color: white;
+}
+
 h1 {
   color: white;
   font-size: 60px;

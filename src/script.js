@@ -140,6 +140,12 @@ function searchTemperature (response) {
   let location = response.data.name;
   let locationElement= document.querySelector("#city");
   locationElement.innerHTML = `${location}`;
+  let descriptionElement = document.querySelector("#weatherDescription");
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  let humidityElement = document.querySelector("#humidity");
+  humidityElement.innerHTML = response.data.main.humidity;
+  let windSpeedElement = document.querySelector("#windSpeed");
+  windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
 }
 
 function searchLocation(event){
@@ -158,6 +164,13 @@ let searchButton = document.querySelector("#searchButton");
 searchButton.addEventListener("click", searchLocation);
 
 formatDateAndTime(currentDateAndTime);
+
+
+
+
+//let cityInput = document.querySelector("#city-input");
+//let apiKey = "5834061fecd9e62b1d62955b902b96f1";
+//let apiUrlFuture = `https://api.openweathermap.org/data/2.5/forecast?q=${cityInput.value}&appid=${apiKey}`
 
 
 
