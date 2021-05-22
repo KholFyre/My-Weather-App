@@ -50,90 +50,11 @@ function formatDateAndTime() {
 
 }
 
-//Format Icons//
-function getIcon(icon){
-  let iconElement = "";
-  if(icon === "angry_clouds") {
-    iconElement = "images/angry_clouds.png";
-  } else if (icon === "cloudy") {
-    iconElement = "images/cloudy.png";
-  } else if (icon ==="day_clear") {
-    iconElement = "images/day_clear.png";
-  } else if (icon === "day_partial_cloudy") {
-    iconElement = "images/day_partial_cloudy.png"; 
-  } else if (icon === "day_rain_thunder") {
-    iconElement = "images/day_rain_thunder.png"; 
-  } else if (icon === "day_rain") {
-    iconElement = "images/day_rain.png"; 
-  } else if (icon === "day_sleet") {
-    iconElement = "images/day_sleet.png"; 
-  } else if (icon === "day_snow_thunder") {
-    iconElement = "images/day_snow_thunder.png"; 
-  } else if (icon === "day_snow") {
-    iconElement = "images/day_snow.png"; 
-  } else if (icon === "fog") {
-    iconElement = "images/fog.png"; 
-  } else if (icon === "mist") {
-    iconElement = "images/mist.png"; 
-  } else if (icon === "night_full_moon_clear") {
-    iconElement = "images/night_full_moon_clear.png"; 
-  } else if (icon === "night_full_moon_partial_cloud") {
-    iconElement = "images/night_full_moon_partial_cloud.png"; 
-  } else if (icon === "night_full_moon_rain_thunder") {
-    iconElement = "images/night_full_moon_rain_thunder.png"; 
-  } else if (icon === " night_full_moon_rain") {
-    iconElement = "images/night_full_moon_rain.png"; 
-  } else if (icon === "night_full_moon_sleet") {
-    iconElement = "images/night_full_moon_sleet.png"; 
-  } else if (icon === "night_full_moon_snow_thunder") {
-    iconElement = "images/night_full_moon_snow_thunder.png"; 
-  } else if (icon === "night_full_moon_snow") {
-    iconElement = "images/night_full_moon_snow.png"; 
-  } else if (icon === "night_half_moon_clear") {
-    iconElement = "images/night_half_moon_clear.png"; 
-  } else if (icon === "night_half_moon_partial_cloud") {
-    iconElement = "images/night_half_moon_partial_cloud.png"; 
-  } else if (icon === "night_half_moon_rain_thunder") {
-    iconElement = "images/night_half_moon_rain_thunder.png"; 
-  } else if (icon === "night_half_moon_rain") {
-    iconElement = "images/night_half_moon_rain.png"; 
-  } else if (icon === "night_half_moon_sleet") {
-    iconElement = "images/night_half_moon_sleet.png"; 
-  } else if (icon === "night_half_moon_snow_thunder") {
-    iconElement = "images/night_half_moon_snow_thunder.png"; 
-  } else if (icon === "night_half_moon_snow") {
-    iconElement = "images/night_half_moon_snow.png"; 
-  } else if (icon === "overcast") {
-    iconElement = "images/overcast.png"; 
-  } else if (icon === "rain_thunder") {
-    iconElement = "images/rain_thunder.png"; 
-  } else if (icon === "rain") {
-    iconElement = "images/rain.png"; 
-  } else if (icon === "sleet") {
-    iconElement = "images/sleet.png"; 
-  } else if (icon === "snow_thunder") {
-    iconElement = "images/snow_thunder.png"; 
-  } else if (icon === "snow") {
-    iconElement = "images/snow.png"; 
-  } else if (icon === "thunder") {
-    iconElement = "images/thunder.png"; 
-  } else if (icon === "tornado") {
-    iconElement = "images/tornado.png"; 
-  } else if (icon === "wind") {
-    iconElement = "images/wind.png"; 
-  }
-
-return iconElement;   
-}
-
-
-
-
-
 
 //SEARCH ENGINE AND BUTTONS//
 
 function searchTemperature (response) {
+  console.log(response.data)
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement= document.querySelector("#current-temperature");
   temperatureElement.innerHTML = `${temperature}`;
@@ -150,6 +71,16 @@ function searchTemperature (response) {
   
   let windSpeedElement = document.querySelector("#windSpeed");
   windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
+
+  let tempMaxElement = document.querySelector("#tempMax");
+  tempMaxElement.innerHTML = Math.round(response.data.main.temp_max);
+
+  let tempMinElement = document.querySelector("#tempMin");
+  tempMinElement.innerHTML = Math.round(response.data.main.temp_min);
+
+
+  let currentWeatherIconElement=document.querySelector("#currentWeatherIcon");
+  currentWeatherIconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 }
 
 function searchLocation(event){

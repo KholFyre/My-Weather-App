@@ -58,7 +58,11 @@
         </div>
       </div>
       <h3 id="city">Search for a City</h3>
-      <h4 id="currentDateAndTime"></h4>
+      <h4>Last Updated: <span id="currentDateAndTime"></span></h4>
+      <div>
+        <img src="" class="current-weather-icon" id="currentWeatherIcon" />
+      </div>
+
       <span class="current-temperature">
         <h1 class="current-temperature" id="current-temperature"></h1>
       </span>
@@ -68,8 +72,11 @@
         <a href="#" id="celsius-link" class="active"> °C</a>
       </span>
 
-      <h6 class="today-max-and-min-temperatures">H:54° L:41°</h6>
-
+      <h6 class="today-max-and-min-temperatures">
+        H: <span id="tempMax"></span> &nbsp; &nbsp; L:
+        <span id="tempMin"></span>
+      </h6>
+      <br />
       <div class="row" id="current-forecast">
         <div class="col-4" id="weatherDescription"></div>
         <div class="col-4">Wind: <span id="windSpeed"></span> mph</div>
@@ -79,35 +86,35 @@
 
       <div class="row by-hourly-forecast" id="by-hourly-forecast">
         <div class="col hours">
-          Currently
+          12pm
           <div class="col by-hourly-weather-icon">
             <img src="images/day_clear.png" width="21" height="21" />
           </div>
           <div class="col">50°</div>
         </div>
         <div class="col">
-          2pm
+          3pm
           <div class="col by-hourly-weather-icon">
             <img src="images/day_clear.png" width="21" height="21" />
           </div>
           <div class="col">48°</div>
         </div>
         <div class="col">
-          4pm
+          6pm
           <div class="col by-hourly-weather-icon">
             <img src="images/day_clear.png" width="21" height="21" />
           </div>
           <div class="col">45°</div>
         </div>
         <div class="col">
-          6pm
+          9pm
           <div class="col by-hourly-weather-icon">
             <img src="images/angry_clouds.png" width="21" height="21" />
           </div>
           <div class="col">43°</div>
         </div>
         <div class="col">
-          8pm
+          12am
           <div class="col by-hourly-weather-icon">
             <img src="images/angry_clouds.png" width="21" height="21" />
           </div>
