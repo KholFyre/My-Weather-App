@@ -129,8 +129,8 @@ function handlePosition(position){
   axios.get(apiUrl).then(showCurrentTemperature);
 }
 
-let geolocationBtn = document.querySelector("#geolocation-button");
-geolocationBtn.addEventListener("click", navigator.geolocation.getCurrentPosition (handlePosition));
+//let geolocationBtn = document.querySelector("#geolocation-button");
+//geolocationBtn.addEventListener("click", navigator.geolocation.getCurrentPosition (handlePosition));
 
 
 
