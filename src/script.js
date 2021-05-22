@@ -83,14 +83,21 @@ function searchTemperature (response) {
   currentWeatherIconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 }
 
-function searchLocation(event){
-  event.preventDefault();
-  let cityInput = document.querySelector("#city-input");
-  let apiKey = "5834061fecd9e62b1d62955b902b96f1";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=imperial`;
+function search(city){
+let apiKey = "5834061fecd9e62b1d62955b902b96f1";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
 
   axios.get(apiUrl).then(searchTemperature);
 }
+
+function searchLocation(event){
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
+
+search("New York");
+
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchLocation);
