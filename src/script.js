@@ -81,6 +81,8 @@ function searchTemperature (response) {
 
   let currentWeatherIconElement=document.querySelector("#currentWeatherIcon");
   currentWeatherIconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+
+
 }
 
 function search(city){
@@ -97,7 +99,7 @@ function searchLocation(event){
 }
 
 search("New York");
-
+displayForecast();
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchLocation);
@@ -168,3 +170,30 @@ celsiusLink.addEventListener("click", convertToCelsius);
 
 
   // Current weather icon, description and current temperature (including maximum and minimum temperatures)
+
+
+
+  function displayForecast(){
+    let forecastElement = document.querySelector("#forecast");
+
+    let forecastHTML = "";
+
+    let days = ["Thursday", "Friday", "Saturday", "Sunday", "Monday"];
+    days.forEach(function(day){
+      forecastHTML = forecastHTML + `
+        <div class="row align-items-start">
+          <div class="col-5" id="day-of-week">${day}</div>
+          <div class="col-4 daily-weather-icon" id="daily-weather-icon">
+            <img src="images/angry_clouds.png" width="21" height="21" />
+          </div>
+          <div class="col-1" id="daily-high">71°</div>
+          <div class="col-1" id="daily-low">45°</div>
+        </div>
+        `;
+
+    });
+
+    
+        forecastElement.innerHTML = forecastHTML;
+  }
+
