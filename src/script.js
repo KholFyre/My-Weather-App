@@ -50,6 +50,22 @@ function formatDateAndTime() {
 
 }
 
+function formatDay(timestamp){
+let date = new Date(timestamp * 1000);
+let day = date.getDay();
+let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+
+return days[day];
+}
+
 
 //SEARCH ENGINE AND BUTTONS//
 
@@ -91,7 +107,7 @@ console.log(coordinates);
 let apiKey = "5834061fecd9e62b1d62955b902b96f1";
 let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
 console.log (apiUrl);
-axios.get(apiUrl).then(displayForecast);
+axios.get(apiUrl).then(displayDailyForecast);
 }
 
 
@@ -168,32 +184,53 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
 
 
-//Display Hourly Forecast
+//Display Hourly Forecast (see displayDailyForecast)
+//function displayHourlyForecast(response){
+  //  let hourlyForecast = response.data.hourly;
+  //  let hourlyForecastElement = document.querySelector ("#hourlyForecast");
+  //  let hourlyForecastHTML ="";
 
+  //  hourlyForecast.forEach(function(forecastHour){
+      
+  //  hourlyForecastHTML = hourlyForecastHTML + `
+  //    <div class="col hours">
+  //        Hour
+  //        <div class="col by-hourly-weather-icon">
+  //          <img src="http://openweathermap.org/img/wn/${forecastHour.weather[0].icon}@2x.png width="21" height="21" />
+  //        </div>
+  //        <div class="col">${Math.round(forecastHour.temp.max)}°</div>
+  //      </div>
+  //  `;
+  //  });
+
+  //hourlyForecastElement.innerHTML = hourlyforecastHTML;
+
+//}
 
 
 
 
 //Display 5 Day Outlook
-  function displayForecast(response){
-    console.log(response.data.daily);
+  function displayDailyForecast(response){
+    let forecast = response.data.daily;
     let forecastElement = document.querySelector("#forecast");
 
     let forecastHTML = "";
 
-    let days = ["Thursday", "Friday", "Saturday", "Sunday", "Monday"];
-    days.forEach(function(day){
+    forecast.forEach(function(forecastDay, index){
+      if (index < 6){
+      
       forecastHTML = forecastHTML + `
         <div class="row align-items-start">
-          <div class="col-5" id="day-of-week">${day}</div>
+          <div class="col-5" id="day-of-week">${formatDay(forecastDay.dt)}</div>
           <div class="col-4 daily-weather-icon" id="daily-weather-icon">
-            <img src="images/angry_clouds.png" width="21" height="21" />
+            <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" width="30" height="30" />
           </div>
-          <div class="col-1" id="daily-high">71°</div>
-          <div class="col-1" id="daily-low">45°</div>
+          <div class="col-1" id="daily-high">${Math.round(forecastDay.temp.max)}°</div>
+          <div class="col-1" id="daily-low">${Math.round(forecastDay.temp.min)}°</div>
         </div>
         `;
-
+      }
     });
 
         forecastElement.innerHTML = forecastHTML;
