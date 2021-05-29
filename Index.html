@@ -44,16 +44,6 @@
                 Search
               </button>
             </div>
-
-            <div class="col">
-              <button
-                type="button"
-                class="btn btn-outline-primary"
-                id="geolocation-button"
-              >
-                <i class="fas fa-map-marker-alt"></i>
-              </button>
-            </div>
           </form>
         </div>
       </div>
@@ -66,16 +56,8 @@
       <span class="current-temperature">
         <h1 class="current-temperature" id="current-temperature"></h1>
       </span>
-      <span class="temperature-units">
-        <a href="#" id="fahrenheit-link" class="active"> °F</a>
-        |
-        <a href="#" id="celsius-link" class="active"> °C</a>
-      </span>
+      <span class="temperature-units"> °F </span>
 
-      <h6 class="today-max-and-min-temperatures">
-        H: <span id="tempMax"></span> &nbsp; &nbsp; L:
-        <span id="tempMin"></span>
-      </h6>
       <br />
       <div class="row" id="current-forecast">
         <div class="col-4" id="weatherDescription">Current Weather</div>
@@ -84,43 +66,6 @@
       </div>
       <hr />
 
-      <div class="row by-hourly-forecast" id="hourlyForecast">
-        <div class="col hours">
-          12pm
-          <div class="col by-hourly-weather-icon">
-            <img src="images/day_clear.png" width="21" height="21" />
-          </div>
-          <div class="col">50°</div>
-        </div>
-        <div class="col">
-          3pm
-          <div class="col by-hourly-weather-icon">
-            <img src="images/day_clear.png" width="21" height="21" />
-          </div>
-          <div class="col">48°</div>
-        </div>
-        <div class="col">
-          6pm
-          <div class="col by-hourly-weather-icon">
-            <img src="images/day_clear.png" width="21" height="21" />
-          </div>
-          <div class="col">45°</div>
-        </div>
-        <div class="col">
-          9pm
-          <div class="col by-hourly-weather-icon">
-            <img src="images/angry_clouds.png" width="21" height="21" />
-          </div>
-          <div class="col">43°</div>
-        </div>
-        <div class="col">
-          12am
-          <div class="col by-hourly-weather-icon">
-            <img src="images/angry_clouds.png" width="21" height="21" />
-          </div>
-          <div class="col">40°</div>
-        </div>
-      </div>
       <hr />
       <div class="container-weekly" id="forecast"></div>
     </div>

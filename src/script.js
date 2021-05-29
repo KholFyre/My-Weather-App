@@ -88,11 +88,6 @@ function searchTemperature (response) {
   let windSpeedElement = document.querySelector("#windSpeed");
   windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
 
-  let tempMaxElement = document.querySelector("#tempMax");
-  tempMaxElement.innerHTML = Math.round(response.data.main.temp_max);
-
-  let tempMinElement = document.querySelector("#tempMin");
-  tempMinElement.innerHTML = Math.round(response.data.main.temp_min);
 
 
   let currentWeatherIconElement=document.querySelector("#currentWeatherIcon");
@@ -155,57 +150,6 @@ function handlePosition(position){
 
   axios.get(apiUrl).then(showCurrentTemperature);
 }
-
-//let geolocationBtn = document.querySelector("#geolocation-button");
-//geolocationBtn.addEventListener("click", navigator.geolocation.getCurrentPosition (handlePosition));
-
-
-
-
-//convert between F and C//
-function convertToFahrenheit (event){
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#current-temperature"); 
-  let temperature = temperatureElement.innerHTML;
-  temperatureElement.innerHTML = Math.round((temperature * 9) / 5 + 32);
-}
-
-function convertToCelsius(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#current-temperature");
-  let temperature = temperatureElement.innerHTML;
-  temperatureElement.innerHTML = Math.round((temperature - 32) * 5 / 9);
-}
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", convertToFahrenheit);   
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", convertToCelsius);
-
-
-//Display Hourly Forecast (see displayDailyForecast)
-//function displayHourlyForecast(response){
-  //  let hourlyForecast = response.data.hourly;
-  //  let hourlyForecastElement = document.querySelector ("#hourlyForecast");
-  //  let hourlyForecastHTML ="";
-
-  //  hourlyForecast.forEach(function(forecastHour){
-      
-  //  hourlyForecastHTML = hourlyForecastHTML + `
-  //    <div class="col hours">
-  //        Hour
-  //        <div class="col by-hourly-weather-icon">
-  //          <img src="http://openweathermap.org/img/wn/${forecastHour.weather[0].icon}@2x.png width="21" height="21" />
-  //        </div>
-  //        <div class="col">${Math.round(forecastHour.temp.max)}°</div>
-  //      </div>
-  //  `;
-  //  });
-
-  //hourlyForecastElement.innerHTML = hourlyforecastHTML;
-
-//}
 
 
 
